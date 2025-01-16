@@ -7,27 +7,64 @@ import {useDate} from "./DateContext.jsx";
 export const AccountBookContext = createContext(); // 상태 데이터 저장 Context
 export const AccountBookDispatchContext = createContext(); // 상태 변경 함수 저장 Context
 
-// 2. 초기 상태 정의
+// 2. 초기 상태 정의 (현재 날짜와 이전 달 날짜로, 총 2달치 데이터를 초기 반환)
 const getInitialAccountBooks = (selectedDate) => {
+    // 현재 날짜의 yearMonth 계산
     const yearMonth = parseInt(
         `${selectedDate.getFullYear().toString().slice(2)}${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}`
     );
 
-    const initialIncome = sampleMonthlyDate.income.find(item => item.yearMonth === yearMonth) || {
-        yearMonth,
-        details: []
-    };
+    // 이전 달의 yearMonth 계산
+    const prevDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, 1);
+    const prevYearMonth = parseInt(
+        `${prevDate.getFullYear().toString().slice(2)}${(prevDate.getMonth() + 1).toString().padStart(2, '0')}`
+    );
 
-    const initialExpend = sampleMonthlyDate.expend.find(item => item.yearMonth === yearMonth) || {
-        yearMonth,
-        details: []
-    };
+    // 현재 날짜와 이전 날짜 데이터를 각각 필터링
+    const initialIncome = sampleMonthlyDate.income.filter(
+        item => item.yearMonth === yearMonth || item.yearMonth === prevYearMonth
+    ).map(item => ({ ...item }));
 
-    return {
-        income: [initialIncome],
-        expend: [initialExpend]
+    const initialExpend = sampleMonthlyDate.expend.filter(
+        item => item.yearMonth === yearMonth || item.yearMonth === prevYearMonth
+    ).map(item => ({ ...item }));
+
+    // 각 배열에서 해당 데이터가 없으면 기본 데이터 추가
+    if (!initialIncome.some(item => item.yearMonth === yearMonth)) {
+        initialIncome.push({ yearMonth, details: [] });
     }
+
+    if (!initialIncome.some(item => item.yearMonth === prevYearMonth)) {
+        initialIncome.push({ yearMonth: prevYearMonth, details: [] });
+    }
+
+    if (!initialExpend.some(item => item.yearMonth === yearMonth)) {
+        initialExpend.push({ yearMonth, details: [] });
+    }
+
+    if (!initialExpend.some(item => item.yearMonth === prevYearMonth)) {
+        initialExpend.push({ yearMonth: prevYearMonth, details: [] });
+    }
+
+    // 초기 상태 반환
+    return {
+        income: initialIncome,
+        expend: initialExpend
+    };
+};
+
+// 새로운 데이터 로드 및 병합 함수
+export const loadMoreAccountBooks = async (dispatch, targetDate) => {
+    const yearMonth = parseInt(
+        `${targetDate.getFullYear().toString().slice(2)}${(targetDate.getMonth() + 1).toString().padStart(2, '0')}`
+    );
+
+    const newIncome = sampleMonthlyDate.income.filter(item => item.yearMonth === yearMonth).map(item => ({ ...item })) || [];
+    const newExpend = sampleMonthlyDate.expend.filter(item => item.yearMonth === yearMonth).map(item => ({ ...item })) || [];
+
+    dispatch({ type: 'LOAD_MORE', newIncome, newExpend });
 }
+
 
 // 3. Reducer 함수 정의
 const reducer = (state, action) => {
@@ -56,6 +93,14 @@ const reducer = (state, action) => {
             const readTotalIncome = income.filter(accountBook => accountBook.yearMonth === yearMonth);
             const readTotalExpend = expend.filter(accountBook => accountBook.yearMonth === yearMonth);
             return { income: readTotalIncome, expend: readTotalExpend };
+        }
+
+        case 'LOAD_MORE': {
+            const {newIncome, newExpend} = action;
+            return {
+                income: [...income, ...newIncome.filter(item => !income.some(incomeItem => incomeItem.yearMonth === item.yearMonth))],
+                expend: [...expend, ...newExpend.filter(item => !expend.some(expendItem => expendItem.yearMonth === item.yearMonth))]
+            }
         }
 
         default:

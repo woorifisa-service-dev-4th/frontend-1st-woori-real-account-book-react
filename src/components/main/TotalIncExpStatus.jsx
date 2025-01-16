@@ -11,11 +11,13 @@ export const TotalIncExpStatus = () => {
 
     // 해당 월의 총 수입 계산
     const totalIncome = income
+        .filter((record) => record.yearMonth == currentYearMonth)
         .reduce((sum, record) => sum + record.details.reduce((subSum, detail) => subSum + detail.amount, 0), 0);
     console.log(`totalIncome: ${totalIncome}`);
 
     // 해당 월의 총 지출 계산
     const totalExpend = expend
+        .filter((record) => record.yearMonth == currentYearMonth)
         .reduce((sum, record) => sum + record.details.reduce((subSum, detail) => subSum + detail.amount, 0), 0);
     console.log(`totalExpend: ${totalExpend}`);
 
@@ -26,11 +28,11 @@ export const TotalIncExpStatus = () => {
 
     // 이전 달의 총 수입과 지출 계산
     const prevTotalIncome = income
-        .filter((record) => record.yearMonth === prevYearMonth)
+        .filter((record) => record.yearMonth == prevYearMonth)
         .reduce((sum, record) => sum + record.details.reduce((subSum, detail) => subSum + detail.amount, 0), 0);
 
     const prevTotalExpend = expend
-        .filter((record) => record.yearMonth === prevYearMonth)
+        .filter((record) => record.yearMonth == prevYearMonth)
         .reduce((sum, record) => sum + record.details.reduce((subSum, detail) => subSum + detail.amount, 0), 0);
 
     // 수입 및 지출 변화량
