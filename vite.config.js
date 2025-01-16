@@ -9,5 +9,10 @@ export default defineConfig({
       { find: '@', replacement: '/src' }
     ]
   },
+  optimizeDeps: {
+    // 특정 Node.js API를 polyfill로 대체하도록 설정
+    nodePolyfills: true,
+  },
   base: '/frontend-1st-woori-real-account-book-react/', // GitHub Pages에서 사용할 기본 경로
+  
 });
