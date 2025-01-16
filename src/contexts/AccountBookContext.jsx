@@ -1,25 +1,33 @@
 import {createContext, useContext, useReducer} from 'react';
 import PropTypes from "prop-types";
+import sampleMonthlyDate from '../utils/sampleMonthlyData.json';
+import {useDate} from "./DateContext.jsx";
 
 // 1. Context 생성
 export const AccountBookContext = createContext(); // 상태 데이터 저장 Context
 export const AccountBookDispatchContext = createContext(); // 상태 변경 함수 저장 Context
 
 // 2. 초기 상태 정의
-const initialAccountBooks = {
-  income: [
-      {
-          yearMonth: null,
-          details: [],
-      }
-  ],
-    expend: [
-        {
-            yearMonth: null,
-            details: [],
-        }
-    ]
-};
+const getInitialAccountBooks = (selectedDate) => {
+    const yearMonth = parseInt(
+        `${selectedDate.getFullYear().toString().slice(2)}${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}`
+    );
+
+    const initialIncome = sampleMonthlyDate.income.find(item => item.yearMonth === yearMonth) || {
+        yearMonth,
+        details: []
+    };
+
+    const initialExpend = sampleMonthlyDate.expend.find(item => item.yearMonth === yearMonth) || {
+        yearMonth,
+        details: []
+    };
+
+    return {
+        income: [initialIncome],
+        expend: [initialExpend]
+    }
+}
 
 // 3. Reducer 함수 정의
 const reducer = (state, action) => {
@@ -57,6 +65,8 @@ const reducer = (state, action) => {
 
 // 4. Provider 컴포넌트 생성
 export const AccountBookProvider = ({ children }) => {
+    const {selectedDate} = useDate();
+    const initialAccountBooks = getInitialAccountBooks(selectedDate);
     const [accountBooks, dispatch] = useReducer(reducer, initialAccountBooks);
 
     return (
