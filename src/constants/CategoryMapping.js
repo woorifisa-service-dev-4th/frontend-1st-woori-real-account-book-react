@@ -5,4 +5,5 @@ export const categoryMapping = {
     shopping: "쇼핑",
     transport: "교통비",
     utilityBills: "공과금",
+    salary : "급여",
 };
