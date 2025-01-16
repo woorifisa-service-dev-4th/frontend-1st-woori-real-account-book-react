@@ -1,4 +1,5 @@
 import React from 'react';
+import wooriIcon from '../assets/images/woori-icon.png';
 
 const Footer = () => {
     return (
@@ -6,7 +7,7 @@ const Footer = () => {
             <footer
                 className="w-full bg-[#F3F5FF] flex flex-col gap-1 items-center justify-center py-12 relative bottom-0">
                 <div className="flex flex-row gap-1 items-center">
-                    <img src="../assets/images/woori-icon.png" alt="woori icon" className="w-[15px] h-[15px]"/>
+                    <img src={wooriIcon} alt="woori icon" className="w-[15px] h-[15px]"/>
                     <p className="gray-text text-[#6A6A6A] text-[14px] weight-500">
                         우리 REAL 가계부
                     </p>
