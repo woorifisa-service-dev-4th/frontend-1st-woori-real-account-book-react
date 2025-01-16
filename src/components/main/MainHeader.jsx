@@ -1,6 +1,7 @@
 import {UserInfo} from "../common/UserInfo.jsx";
 import {SelectedDate} from "./SelectedDate.jsx";
 import {NightDayMode} from "../common/NightDayMode.jsx";
+import {MoveButton} from "../common/MoveButton.jsx";
 
 const MainHeader = () => {
 
@@ -12,12 +13,12 @@ const MainHeader = () => {
 
                 <div className="flex flex-col items-end h-full justify-between">
                     <NightDayMode/>
-                    {/*<div className="flex flex-row gap-2">*/}
-                    {/*    <MoveButton content={"분석 보기"}*/}
-                    {/*                moveUrl={"category-analysis.html"}/>*/}
-                    {/*    <MoveButton content={"내역 등록"}*/}
-                    {/*                moveUrl={"transaction-register.html"}/>*/}
-                    {/*</div>*/}
+                    <div className="flex flex-row gap-2">
+                        <MoveButton content={"분석 보기"}
+                                    moveUrl={"category-analysis"}/>
+                        <MoveButton content={"내역 등록"}
+                                    moveUrl={"transaction-register"}/>
+                    </div>
                 </div>
             </div>
         </>
