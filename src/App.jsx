@@ -1,5 +1,5 @@
-import {AccountBookProvider} from "./contexts/AccountBookContext.jsx";
-import {Route, Router, Routes} from "react-router-dom";
+import { AccountBookProvider } from "./contexts/AccountBookContext.jsx";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage.jsx";
 import CategoryAnalysisPage from "./pages/CategoryAnalysisPage.jsx";
 import Footer from "./components/Footer.jsx";
