@@ -1,4 +1,4 @@
-import {useDate, useDateDispatch} from "../../contexts/DateContext.jsx";
+import {useDate, useDateDispatch, useHandleDateChange} from "../../contexts/DateContext.jsx";
 import prevBtn from "../../assets/images/vector-left-gray-icon.png";
 import nextBtn from "../../assets/images/vector-right-gray-icon.png";
 
@@ -9,9 +9,10 @@ import nextBtn from "../../assets/images/vector-right-gray-icon.png";
 export const SelectedDate = () => {
     const {selectedDate} = useDate();   // 현재 선택된 날짜
     const dispatch = useDateDispatch(); // 날짜 변경 dispatch
+    const {handleMovePrevDate, handleMoveNextDate} = useHandleDateChange();
 
-    const movePrevDate = () => dispatch({ type: "MOVE_PREV_DATE" }); // 이전 달로 이동
-    const moveNextDate = () => dispatch({ type: "MOVE_NEXT_DATE" }); // 다음 달로 이동
+    const movePrevDate = () => handleMovePrevDate(selectedDate, dispatch); // 이전 달로 이동
+    const moveNextDate = () => handleMoveNextDate(selectedDate, dispatch); // 다음 달로 이동
 
     // 날짜 형식 변환 (YYYY.MM)
     const formatDate = (date) => {

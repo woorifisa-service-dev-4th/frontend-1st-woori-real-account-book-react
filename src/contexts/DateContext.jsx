@@ -1,5 +1,6 @@
 import {createContext, useContext, useReducer} from "react";
 import PropTypes from "prop-types";
+import {loadMoreAccountBooks, useAccountBooksDispatch} from "./AccountBookContext.jsx";
 
 // Context 생성
 export const DateContext = createContext();
@@ -9,6 +10,25 @@ export const DateDispatchContext = createContext();
 const initialDateState = {
     selectedDate: new Date()
 }
+
+// 날짜 변경 함수
+export const useHandleDateChange = () => {
+    const dispatch = useAccountBooksDispatch();
+
+    const handleMovePrevDate = (selectedDate, dispatchDate) => {
+        const prevDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, 1);
+        dispatchDate({ type: 'MOVE_PREV_DATE' });
+        loadMoreAccountBooks(dispatch, prevDate); // 이전 달 데이터 로드
+    };
+
+    const handleMoveNextDate = (selectedDate, dispatchDate) => {
+        const nextDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 1);
+        dispatchDate({ type: 'MOVE_NEXT_DATE' });
+        loadMoreAccountBooks(dispatch, nextDate); // 다음 달 데이터 로드
+    };
+
+    return { handleMovePrevDate, handleMoveNextDate };
+};
 
 // Reducer 함수
 const dateReducer = (state, actor) => {
