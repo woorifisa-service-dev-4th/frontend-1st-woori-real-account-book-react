@@ -14,74 +14,86 @@
 | [권민지](https://github.com/mjgwon24) | [권지윤](https://github.com/june0216) | [김새봄](https://github.com/saebomnewspring) | [윤영찬](https://github.com/yyc0026) |
 | --- | --- | --- | --- |
 | <img src="asset/member/민지.jpeg" width="150" /> | <img src="asset/member/지윤.png" width="150" /> | <img src="asset/member/새봄.jpeg" width="150" /> | <img src="asset/member/영찬.png" width="150" /> |
-| HTML, CSS, Figma | HTML, CSS, Github 세팅 | HTML, CSS | HTML, CSS |
-
-# 📦 폴더 구조
-리액트 적용 후 변경된 폴더구조 
-📦src
- ┣ 📂assets
- ┃ ┣ 📂images
- ┃ ┃ ┣ 📜day-mode-btn.png
- ┃ ┃ ┣ 📜move-button.png
- ┃ ┃ ┣ 📜night-mode-btn.png
- ┃ ┃ ┣ 📜react.svg
- ┃ ┃ ┣ 📜user-profile-default.png
- ┃ ┃ ┣ 📜vector-left-black-icon.png
- ┃ ┃ ┣ 📜vector-left-gray-icon.png
- ┃ ┃ ┣ 📜vector-right-gray-icon.png
- ┃ ┃ ┣ 📜woori-icon.png
- ┃ ┃ ┗ 📜woori-real-icon.png
- ┃ ┗ 📜.DS_Store
- ┣ 📂components
- ┃ ┣ 📂categoryAnalysis
- ┃ ┃ ┣ 📜AnalysisBody.jsx
- ┃ ┃ ┣ 📜AnalysisHeader.jsx
- ┃ ┃ ┣ 📜CategoryBar.jsx
- ┃ ┃ ┣ 📜CategoryButton.jsx
- ┃ ┃ ┣ 📜CategoryCharts.jsx
- ┃ ┃ ┣ 📜CircleChart.jsx
- ┃ ┃ ┣ 📜RankChart.jsx
- ┃ ┃ ┗ 📜WeeklySection.jsx
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📜MoveButton.jsx
- ┃ ┃ ┣ 📜NightDayMode.jsx
- ┃ ┃ ┗ 📜UserInfo.jsx
- ┃ ┣ 📂main
- ┃ ┃ ┣ 📂DetailsTable
- ┃ ┃ ┃ ┣ 📜DetailsTable.jsx
- ┃ ┃ ┃ ┣ 📜DetailsTableBtn.jsx
- ┃ ┃ ┃ ┣ 📜DetailsTableContents.jsx
- ┃ ┃ ┃ ┣ 📜DetailsTableDaily.jsx
- ┃ ┃ ┃ ┗ 📜DetailsTableMonth.jsx
- ┃ ┃ ┣ 📜MainBody.jsx
- ┃ ┃ ┣ 📜MainHeader.jsx
- ┃ ┃ ┣ 📜SelectedDate.jsx
- ┃ ┃ ┗ 📜TotalIncExpStatus.jsx
- ┃ ┗ 📜Footer.jsx
- ┣ 📂constants
- ┃ ┣ 📜CategoryMapping.js
- ┃ ┗ 📜ChartColors.js
- ┣ 📂contexts
- ┃ ┣ 📜AccountBookContext.jsx
- ┃ ┣ 📜DateContext.jsx
- ┃ ┗ 📜ThemeContext.jsx
- ┣ 📂layouts
- ┃ ┗ 📜DefaultLayout.jsx
- ┣ 📂pages
- ┃ ┣ 📜CategoryAnalysisPage.jsx
- ┃ ┗ 📜MainPage.jsx
- ┣ 📂utils
- ┃ ┗ 📜sampleMonthlyData.json
- ┣ 📜.DS_Store
- ┣ 📜App.jsx
- ┣ 📜constants.js
- ┣ 📜index.css
- ┗ 📜main.jsx
+| HTML, CSS, React, Figma | HTML, CSS, React, Github 관리 | HTML, CSS, React | HTML, CSS, React |
 
 # 🌐 배포
 🔗 [ 우리REAL가계부 URL ](https://woorifisa-service-dev-4th.github.io/frontend-1st-woori-real-account-book/)
 
 <img src="https://private-user-images.githubusercontent.com/76603301/400211121-0f40ec0a-b296-4771-8dd5-09f218bcd4ec.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzYwOTE4NDUsIm5iZiI6MTczNjA5MTU0NSwicGF0aCI6Ii83NjYwMzMwMS80MDAyMTExMjEtMGY0MGVjMGEtYjI5Ni00NzcxLThkZDUtMDlmMjE4YmNkNGVjLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTA1VDE1MzkwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWUwMjQxZmE2ODRlMDQ5ZmU2NDE3YjlhNWY2NTEwNjEwYWU2OTBhYTljZmNhM2FmNzY2ZmMzYTUwMDYwMmU0Y2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.XrJhxsRMWjLxx1Te4AiNbZXl97HDH_DA_NzhW0u-_lg">
+
+
+# 📦 폴더 구조
+리액트 적용 후 변경된 폴더구조 
+
+📦 src
+
+├─ 📂 assets  
+│  ├─ 📂 images  
+│  │  ├─ 📜 day-mode-btn.png  
+│  │  ├─ 📜 move-button.png  
+│  │  ├─ 📜 night-mode-btn.png  
+│  │  ├─ 📜 react.svg  
+│  │  ├─ 📜 user-profile-default.png  
+│  │  ├─ 📜 vector-left-black-icon.png  
+│  │  ├─ 📜 vector-left-gray-icon.png  
+│  │  ├─ 📜 vector-right-gray-icon.png  
+│  │  ├─ 📜 woori-icon.png  
+│  │  └─ 📜 woori-real-icon.png  
+│  └─ 📜 .DS_Store  
+
+├─ 📂 components  
+│  ├─ 📂 categoryAnalysis  
+│  │  ├─ 📜 AnalysisBody.jsx  
+│  │  ├─ 📜 AnalysisHeader.jsx  
+│  │  ├─ 📜 CategoryBar.jsx  
+│  │  ├─ 📜 CategoryButton.jsx  
+│  │  ├─ 📜 CategoryCharts.jsx  
+│  │  ├─ 📜 CircleChart.jsx  
+│  │  ├─ 📜 RankChart.jsx  
+│  │  └─ 📜 WeeklySection.jsx  
+│  ├─ 📂 common  
+│  │  ├─ 📜 MoveButton.jsx  
+│  │  ├─ 📜 NightDayMode.jsx  
+│  │  └─ 📜 UserInfo.jsx  
+│  ├─ 📂 main  
+│  │  ├─ 📂 DetailsTable  
+│  │  │  ├─ 📜 DetailsTable.jsx  
+│  │  │  ├─ 📜 DetailsTableBtn.jsx  
+│  │  │  ├─ 📜 DetailsTableContents.jsx  
+│  │  │  ├─ 📜 DetailsTableDaily.jsx  
+│  │  │  └─ 📜 DetailsTableMonth.jsx  
+│  │  ├─ 📜 MainBody.jsx  
+│  │  ├─ 📜 MainHeader.jsx  
+│  │  ├─ 📜 SelectedDate.jsx  
+│  │  └─ 📜 TotalIncExpStatus.jsx  
+│  └─ 📜 Footer.jsx  
+
+├─ 📂 constants  
+│  ├─ 📜 CategoryMapping.js  
+│  └─ 📜 ChartColors.js  
+
+├─ 📂 contexts  
+│  ├─ 📜 AccountBookContext.jsx  
+│  ├─ 📜 DateContext.jsx  
+│  └─ 📜 ThemeContext.jsx  
+
+├─ 📂 layouts  
+│  └─ 📜 DefaultLayout.jsx  
+
+├─ 📂 pages  
+│  ├─ 📜 CategoryAnalysisPage.jsx  
+│  └─ 📜 MainPage.jsx  
+
+├─ 📂 utils  
+│  └─ 📜 sampleMonthlyData.json  
+
+├─ 📜 .DS_Store  
+├─ 📜 App.jsx  
+├─ 📜 constants.js  
+├─ 📜 index.css  
+└─ 📜 main.jsx  
+
+
 
 # 🖥️ 화면 별 기능
 ### 시작 화면
