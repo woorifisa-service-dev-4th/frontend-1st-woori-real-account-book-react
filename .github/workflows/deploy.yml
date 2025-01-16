@@ -21,17 +21,21 @@ jobs:
         node-version: 16  # 사용하는 Node.js 버전
         cache: 'npm'
 
-    # 3. 의존성 설치
+    # 3. @rollup/plugin-node-resolve 패키지 설치
+    - name: Install @rollup/plugin-node-resolve
+      run: npm install --save-dev @rollup/plugin-node-resolve  # 플러그인 설치
+
+    # 4. 의존성 설치
     - name: Install dependencies
       run: npm install
 
-    # 4. Vite 빌드 실행
+    # 5. Vite 빌드 실행
     - name: Build project
       run: npm run build
 
-    # 5. GitHub Pages로 배포
+    # 6. GitHub Pages로 배포
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: ./dist  # Vite 빌드 후 생성된 dist 폴더를 GitHub Pages로 배포
