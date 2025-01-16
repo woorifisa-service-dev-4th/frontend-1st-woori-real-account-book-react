@@ -5,6 +5,7 @@ import CategoryAnalysisPage from "./pages/CategoryAnalysisPage.jsx";
 import Footer from "./components/Footer.jsx";
 import {ThemeProvider} from "./contexts/ThemeContext.jsx";
 import {DefaultLayout} from "./layouts/DefaultLayout.jsx";
+import {DateProvider} from "./contexts/DateContext.jsx";
 
 function App() {
 
@@ -12,12 +13,14 @@ function App() {
     <Router >
         <DefaultLayout>
             <ThemeProvider>
-                <AccountBookProvider>
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
-                        <Route path="/category-analysis" element={<CategoryAnalysisPage />} />
-                    </Routes>
-                </AccountBookProvider>
+                <DateProvider>
+                    <AccountBookProvider>
+                        <Routes>
+                            <Route path="/" element={<MainPage />} />
+                            <Route path="/category-analysis" element={<CategoryAnalysisPage />} />
+                        </Routes>
+                    </AccountBookProvider>
+                </DateProvider>
             </ThemeProvider>
         </DefaultLayout>
         <Footer />
