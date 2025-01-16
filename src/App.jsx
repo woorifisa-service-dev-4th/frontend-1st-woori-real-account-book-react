@@ -1,14 +1,21 @@
 import {AccountBookProvider} from "./contexts/AccountBookContext.jsx";
-import MainHeader from "./components/MainHeader.jsx";
+import {Route, Router, Routes} from "react-router-dom";
+import MainPage from "./pages/MainPage.jsx";
+import CategoryAnalysisPage from "./pages/CategoryAnalysisPage.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
 
   return (
-    <>
+    <Router >
       <AccountBookProvider>
-        <MainHeader />
+          <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/category-analysis" element={<CategoryAnalysisPage />} />
+          </Routes>
+        <Footer />
       </AccountBookProvider>
-    </>
+    </Router>
   )
 }
 
