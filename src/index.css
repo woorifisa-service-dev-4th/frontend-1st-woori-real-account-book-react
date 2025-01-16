@@ -57,6 +57,24 @@
     font-family: Pretendard-ExtraBold, sans-serif;
 }
 
+:root {
+    --background-color: #ffffff;
+    --text-color: #202020;
+    --highlight-color: #506cff;
+}
+
+.black-text {
+    color: #000000;
+}
+
+.gray-text {
+    color: #B6B6B6;
+}
+
+.dark-gray-text {
+    color: #5E5E5E;
+}
+
 .night-mode {
     --background-color: #202020;
     --text-color: #ffffff;
