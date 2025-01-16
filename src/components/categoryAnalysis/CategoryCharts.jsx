@@ -29,10 +29,12 @@ const CategoryCharts = () => {
 
     return (
         <div className="flex flex-row justify-center items-center gap-12 mt-6 w-full">
-            <CircleChart data={filteredData} /> {/* 필터링된 데이터 전달 */}
-            <div id="category-rank" className="flex flex-col space-y-4 justify-center items-start flex-grow w-full">
-                <RankChart data={filteredData} /> {/* 필터링된 데이터 전달 */}
+            <CircleChart data={filteredData}/> {/* 필터링된 데이터 전달 */}
+            <div id="category-rank"
+                 className="flex flex-col space-y-4 justify-center items-start flex-grow w-[90%] max-w-[300px] h-[300px]">
+                <RankChart data={filteredData}/> {/* 필터링된 데이터 전달 */}
             </div>
+
         </div>
     );
 };
