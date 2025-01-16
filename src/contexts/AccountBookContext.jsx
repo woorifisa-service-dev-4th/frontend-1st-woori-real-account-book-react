@@ -65,6 +65,18 @@ export const loadMoreAccountBooks = async (dispatch, targetDate) => {
     dispatch({ type: 'LOAD_MORE', newIncome, newExpend });
 }
 
+const calculateCategorySums = (details) =>
+    details.reduce((acc, item) => {
+        if (item.category) {
+            acc[item.category] = (acc[item.category] || 0) + (item.amount || 0);
+        }
+        return acc;
+    }, {});
+
+const filterDetailsByYearMonth = (data, yearMonth) =>
+    data
+        .filter(entry => String(entry.yearMonth) === String(yearMonth))
+        .flatMap(entry => entry.details);
 
 // 3. Reducer 함수 정의
 const reducer = (state, action) => {
@@ -94,6 +106,52 @@ const reducer = (state, action) => {
             const readTotalExpend = expend.filter(accountBook => accountBook.yearMonth === yearMonth);
             return { income: readTotalIncome, expend: readTotalExpend };
         }
+        // FILTER_BY_CATEGORY_AND_YEAR
+        case 'FILTER_BY_CATEGORY_AND_YEAR': {
+            const { yearMonth } = action;
+
+            // yearMonth에 해당하는 모든 details 데이터 필터링
+            console.log(expend)
+            const filteredDetails = filterDetailsByYearMonth(expend, yearMonth);
+            console.log(filteredDetails.length);
+            // 카테고리별 합계 계산
+            const categorySums = calculateCategorySums(filteredDetails);
+
+            // 객체를 배열로 변환 (배열 형태로 저장)
+            const filteredCategoryData = Object.entries(categorySums).map(([category, totalAmount]) => ({
+                category,
+                totalAmount,
+            }));
+            console.log(filteredCategoryData.length);
+            return {
+                ...state,
+                filteredCategoryData, // 배열 형태로 저장
+            };
+        }
+
+// CALCULATE_PERCENTAGES
+        case 'CALCULATE_PERCENTAGES': {
+            const { yearMonth } = action;
+            const filteredDetails = filterDetailsByYearMonth(expend, yearMonth);
+            const categorySums = calculateCategorySums(filteredDetails);
+
+            const totalExpenditure = Object.values(categorySums).reduce((acc, curr) => acc + curr, 0);
+            const categoryPercentages = Object.entries(categorySums)
+                .map(([category, amount]) => ({
+                    category,
+                    totalAmount: amount,
+                    percentage: totalExpenditure > 0 ? ((amount / totalExpenditure) * 100).toFixed(2) : 0,
+                }))
+                .sort((a, b) => b.totalAmount - a.totalAmount);
+
+            return {
+                ...state,
+                categoryPercentages,
+                totalExpenditure,
+            };
+        }
+
+
 
         case 'LOAD_MORE': {
             const {newIncome, newExpend} = action;

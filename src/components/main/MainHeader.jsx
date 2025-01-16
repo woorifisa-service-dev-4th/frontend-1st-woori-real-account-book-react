@@ -2,9 +2,9 @@ import {UserInfo} from "../common/UserInfo.jsx";
 import {SelectedDate} from "./SelectedDate.jsx";
 import {NightDayMode} from "../common/NightDayMode.jsx";
 import {MoveButton} from "../common/MoveButton.jsx";
+import {useContext} from "react";
 
 const MainHeader = () => {
-
     return (
         <>
             <div className="flex flex-row justify-between w-full items-end h-[78px]">

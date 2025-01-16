@@ -4,8 +4,10 @@ import MainPage from "./pages/MainPage.jsx";
 import CategoryAnalysisPage from "./pages/CategoryAnalysisPage.jsx";
 import Footer from "./components/Footer.jsx";
 import {ThemeProvider} from "./contexts/ThemeContext.jsx";
-import {DefaultLayout} from "./layouts/DefaultLayout.jsx";
+
 import {DateProvider} from "./contexts/DateContext.jsx";
+import DefaultLayout from "./layouts/DefaultLayout.jsx";
+import React from "react";
 
 function App() {
 
