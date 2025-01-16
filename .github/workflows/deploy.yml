@@ -30,7 +30,8 @@ jobs:
 
     # 5. polyfill.js 실행 (structuredClone 지원)
     - name: Run polyfill for structuredClone
-      run: node polyfill.js
+      run: node ${{ github.workspace }}/polyfill.js
+
 
     # 6. Vite 빌드 실행
     - name: Build project
