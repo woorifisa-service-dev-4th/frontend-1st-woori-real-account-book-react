@@ -1,3 +1,5 @@
+import {createContext, useReducer} from 'react';
+
 // 1. Context 생성
 export const AccountBookContext = createContext(); // 상태 데이터 저장 Context
 export const AccountBookDispatchContext = createContext(); // 상태 변경 함수 저장 Context
@@ -23,31 +25,34 @@ const reducer = (state, action) => {
     const { income, expend } = state;
 
     switch (action.type) {
-        case 'ADD':
-        const { newAccountBook } = action;
-        return { income: [...income, newAccountBook], expend: [...expend, newAccountBook] };
+        case 'ADD': {
+            const { newAccountBook } = action;
+            return { income: [...income, newAccountBook], expend: [...expend, newAccountBook] };
+        }
 
-        case 'UPDATE':
-        const { updateAccountBook } = action;
-        const updatedAccountBooks = income.map(accountBook => accountBook.yearMonth === updateAccountBook.yearMonth ? { ...updateAccountBook } : accountBook);
-        return { income: updatedAccountBooks, expend: updatedAccountBooks };
+        case 'UPDATE': {
+            const { updateAccountBook } = action;
+            const updatedAccountBooks = income.map(accountBook => accountBook.yearMonth === updateAccountBook.yearMonth ? { ...updateAccountBook } : accountBook);
+            return { income: updatedAccountBooks, expend: updatedAccountBooks };
+        }
 
-        case 'DELETE':
-        const { yearMonth } = action;
-        const deletedAccountBooks = income.filter(accountBook => accountBook.yearMonth !== yearMonth);
-        return { income: deletedAccountBooks, expend: deletedAccountBooks };
+        case 'DELETE': {
+            const { yearMonth } = action;
+            const deletedAccountBooks = income.filter(accountBook => accountBook.yearMonth !== yearMonth);
+            return { income: deletedAccountBooks, expend: deletedAccountBooks };
+        }
 
-        // 선택 날짜의 income, expend 데이터 조회 (한달치)
-        case 'READ_TOTAL':
-        const { yearMonth } = action;
-        const readTotalIncome = income.filter(accountBook => accountBook.yearMonth === yearMonth);
-        const readTotalExpend = expend.filter(accountBook => accountBook.yearMonth === yearMonth);
-        return { income: readTotalIncome, expend: readTotalExpend };
+        case 'READ_TOTAL': {
+            const { yearMonth } = action;
+            const readTotalIncome = income.filter(accountBook => accountBook.yearMonth === yearMonth);
+            const readTotalExpend = expend.filter(accountBook => accountBook.yearMonth === yearMonth);
+            return { income: readTotalIncome, expend: readTotalExpend };
+        }
 
         default:
-        throw new Error(`Unhandled action type: ${action.type}`);
+            throw new Error(`Unhandled action type: ${action.type}`);
     }
-}
+};
 
 // 4. Provider 컴포넌트 생성
 export const AccountBookProvider = ({ children }) => {
