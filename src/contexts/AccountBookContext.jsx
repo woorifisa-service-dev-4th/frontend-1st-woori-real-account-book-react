@@ -1,4 +1,5 @@
-import {createContext, useReducer} from 'react';
+import {createContext, useContext, useReducer} from 'react';
+import PropTypes from "prop-types";
 
 // 1. Context 생성
 export const AccountBookContext = createContext(); // 상태 데이터 저장 Context
@@ -66,6 +67,10 @@ export const AccountBookProvider = ({ children }) => {
         </AccountBookContext.Provider>
     )
 }
+
+AccountBookProvider.propTypes = {
+    children: PropTypes.node.isRequired
+};
 
 // 5. 커스텀 훅 생성
 export const useAccountBooks = () => useContext(AccountBookContext);
