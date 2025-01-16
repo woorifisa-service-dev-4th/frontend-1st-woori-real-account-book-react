@@ -56,12 +56,13 @@ const CircleChart = () => {
     return (
         <div>
             <div className="flex flex-col w-full items-center">
-                <p className="weight-600 text-[18px] text-left w-full">
+                <p className="weight-600 text-[18px] text-left w-full mb-4">
                     카테고리별 지출 내역
                 </p>
-                <div id="chart-container" className="relative w-[328px] h-[327px] mt-4">
-                    <Doughnut data={chartData} options={options} />
+                <div id="chart-container" className="relative w-[246px] h-[245px] mt-4">
+                    <Doughnut data={chartData} options={options}/>
                 </div>
+
             </div>
         </div>
     );
