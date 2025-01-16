@@ -1,13 +1,16 @@
-import {AccountBookProvider} from "./contexts/AccountBookContext.jsx";
-import MainHeader from "./components/MainHeader.jsx";
 
 function App() {
 
   return (
     <>
-      <AccountBookProvider>
-        <MainHeader />
-      </AccountBookProvider>
+      <DefaultLaout>
+        <Header>
+
+          <script src="https://cdn.tailwindcss.com"></script>
+          <link rel="icon" href="../images/favicon.png"/>
+          <link rel="icon" href="/images/favicon.png"/>
+        </Header>
+      </DefaultLaout>
     </>
   )
 }
