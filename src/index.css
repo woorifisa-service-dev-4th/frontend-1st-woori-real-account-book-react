@@ -56,3 +56,34 @@
 .weight-800 {
     font-family: Pretendard-ExtraBold, sans-serif;
 }
+
+.night-mode {
+    --background-color: #202020;
+    --text-color: #ffffff;
+    --highlight-color: #ffd700;
+}
+
+.dark-mode-light-gray {
+    --text-color: #dddddd;
+}
+
+.night-mode p:not(.black-text):not(.gray-text):not(.dark-gray-text) {
+    color: var(--text-color);
+}
+
+.night-mode .dark-mode-light-gray {
+    color: var(--text-color);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+button, .text-highlight {
+    color: var(--highlight-color);
+}
+
+.min-h-content {
+    min-height: calc(100vh - 189px);
+}
