@@ -33,7 +33,6 @@ export const useHandleDateChange = () => {
 // Reducer 함수
 const dateReducer = (state, actor) => {
     const { selectedDate } = state;
-
     switch (actor.type) {
         // 이전 달로 이동 (2024.08까지만 이동 가능)
         case 'MOVE_PREV_DATE':
@@ -89,4 +88,5 @@ DateProvider.propTypes = {
 
 // 5. 커스텀 훅 생성
 export const useDate = () => useContext(DateContext);
+
 export const useDateDispatch = () => useContext(DateDispatchContext);
