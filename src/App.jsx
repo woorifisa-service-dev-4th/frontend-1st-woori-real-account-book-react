@@ -1,17 +1,21 @@
+import {AccountBookProvider} from "./contexts/AccountBookContext.jsx";
+import {Route, Router, Routes} from "react-router-dom";
+import MainPage from "./pages/MainPage.jsx";
+import CategoryAnalysisPage from "./pages/CategoryAnalysisPage.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
 
   return (
-    <>
-      <DefaultLaout>
-        <Header>
-
-          <script src="https://cdn.tailwindcss.com"></script>
-          <link rel="icon" href="../images/favicon.png"/>
-          <link rel="icon" href="/images/favicon.png"/>
-        </Header>
-      </DefaultLaout>
-    </>
+    <Router >
+      <AccountBookProvider>
+          <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/category-analysis" element={<CategoryAnalysisPage />} />
+          </Routes>
+        <Footer />
+      </AccountBookProvider>
+    </Router>
   )
 }
 
