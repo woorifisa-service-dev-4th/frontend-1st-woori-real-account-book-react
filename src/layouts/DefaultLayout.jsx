@@ -1,4 +1,6 @@
 import React from "react";
+import lefticon from '../assets/images/woori-icon.png';
+
 
 const DefaultLayout = ({ children }) => {
     return (
@@ -11,8 +13,8 @@ const DefaultLayout = ({ children }) => {
                     <div className="flex flex-row justify-between w-full items-end h-[78px]">
                         <div className="flex flex-row items-center gap-2">
                             <img
-                                src="../images/vector-left-black-icon.png"
-                                alt="left icon"
+                                src={lefticon}
+                                alt="lefticon"
                                 onClick={() => (window.location.href = 'main.html')}
                                 className="w-[10px] pb-[15px] cursor-pointer"
                             />
