@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAccountBooks } from "../../contexts/AccountBookContext.jsx";
-import { categoryMapping } from "../../constants/categoryMapping.js"; // 상수 import
+import { categoryMapping } from "../../constants/CategoryMapping.js"; // 상수 import
 import { ChartColors } from "../../constants/ChartColors.js"; // 상수 import
 
 
