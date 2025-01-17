@@ -1,18 +1,19 @@
-import resolve from '@rollup/plugin-node-resolve';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import resolve from '@rollup/plugin-node-resolve';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    resolve() // Register the rollup plugin for module resolution
+  ],
   resolve: {
-    alias: [
-      { find: '@', replacement: '/src' }
-    ]
+    alias: {
+      '@': '/src',  // Setting up the alias for '@' to map to the 'src' folder
+    }
   },
   optimizeDeps: {
-    // 특정 Node.js API를 polyfill로 대체하도록 설정
-    nodePolyfills: true,
+    nodePolyfills: true,  // Polyfills for Node.js modules
   },
-  base: '/frontend-1st-woori-real-account-book-react/', // GitHub Pages에서 사용할 기본 경로
-  
+  base: '/', // Set base to '/' for Vercel deployment
 });

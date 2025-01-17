@@ -10,7 +10,7 @@ import React from "react";
 
 function App() {
     return (
-        <Router basename="/frontend-1st-woori-real-account-book-react">
+        <Router>
             <DefaultLayout>
                 <ThemeProvider>
                     <DateProvider>

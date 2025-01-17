@@ -1,7 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { useAccountBooks } from "../../contexts/AccountBookContext.jsx";
-import { categoryMapping } from "../../constants/categoryMapping"; // 상수 import
+import { categoryMapping } from "../../constants/CategoryMapping"; // 상수 import
 import { ChartColors } from "../../constants/ChartColors.js"; // 상수 import
 import {
     Chart as ChartJS,
