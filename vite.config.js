@@ -1,9 +1,7 @@
-
-// https://vite.dev/config/
+import resolve from '@rollup/plugin-node-resolve';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -11,5 +9,10 @@ export default defineConfig({
       { find: '@', replacement: '/src' }
     ]
   },
+  optimizeDeps: {
+    // 특정 Node.js API를 polyfill로 대체하도록 설정
+    nodePolyfills: true,
+  },
   base: '/frontend-1st-woori-real-account-book-react/', // GitHub Pages에서 사용할 기본 경로
+  
 });

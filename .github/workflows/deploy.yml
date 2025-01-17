@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # master 브랜치에 푸시될 때 트리거
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. 리포지토리 체크아웃
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Node.js 설치
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '17'  # Node.js 17 이상
+
+    # 3. @rollup/plugin-node-resolve 패키지 설치
+    - name: Install @rollup/plugin-node-resolve
+      run: npm install --save-dev @rollup/plugin-node-resolve  # 플러그인 설치
+
+    # 4. 의존성 설치
+    - name: Install dependencies
+      run: npm install
+
+
+    # 6. Vite 빌드 실행
+    - name: Build project
+      run: npm run build
+
+    # 7. GitHub Pages로 배포
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
